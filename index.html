@@ -471,6 +471,72 @@
 
     footer a { color: var(--gold); text-decoration: none; }
 
+    /* ─── GALERIE ─── */
+    .galerie-section { background: var(--cream); }
+
+    .galerie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .galerie-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+      display: block;
+    }
+    .galerie-grid img:hover { opacity: 0.85; transform: scale(1.02); }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.93);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 80vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .lb-close {
+      position: absolute; top: 20px; right: 28px;
+      background: none; border: none;
+      color: #fff; font-size: 1.8rem;
+      cursor: pointer; opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .lb-close:hover { opacity: 1; }
+
+    .lb-prev, .lb-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: none; border: none;
+      color: #fff; font-size: 2.5rem;
+      cursor: pointer; opacity: 0.6;
+      padding: 20px;
+      transition: opacity 0.2s;
+    }
+    .lb-prev:hover, .lb-next:hover { opacity: 1; }
+    .lb-prev { left: 10px; }
+    .lb-next { right: 10px; }
+
+    .lb-counter {
+      position: absolute; bottom: 20px;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.8rem;
+    }
+
     /* ─── DIVIDER ─── */
     .divider {
       width: 48px;
@@ -538,6 +604,23 @@
     <div class="scroll-hint" aria-hidden="true">
       <div class="scroll-line"></div>
       <span>Découvrir</span>
+    </div>
+  </section>
+
+  <!-- ═══ GALERIE PHOTOS ═══ -->
+  <section class="galerie-section" id="photos" aria-labelledby="h2-galerie">
+    <div class="container">
+      <span class="section-label">Photos du bien</span>
+      <h2 class="section-title" id="h2-galerie">Visite en images</h2>
+      <div class="divider"></div>
+      <div class="galerie-grid" id="galerie"></div>
+      <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo agrandie">
+        <button class="lb-close" onclick="closeLB()" aria-label="Fermer">✕</button>
+        <button class="lb-prev" onclick="moveLB(-1)" aria-label="Photo précédente">&#8592;</button>
+        <img id="lb-img" src="" alt="Photo du bien">
+        <button class="lb-next" onclick="moveLB(1)" aria-label="Photo suivante">&#8594;</button>
+        <span class="lb-counter" id="lb-counter"></span>
+      </div>
     </div>
   </section>
 
@@ -704,5 +787,80 @@
     <p style="margin-top:8px; font-size:0.72rem; opacity:0.5">Page de présentation non contractuelle — informations à titre indicatif</p>
   </footer>
 
+  <script>
+    const photos = [
+      "https://lh3.googleusercontent.com/pw/AP1GczMzS10BRBy5CUoHDQ5oMleE3Vqx6ctXIJktHbEB7Od3L98FQ0mT3f6KK-tK_AJ4mVC4Vroyepwcg0NFanNUk0aLyQgXIkTcGoytb_R80AbAGfyCa9Y=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczMHG5yhbuuLv74IuAvVyQIVGrobbz2LYzcJnVM7pe6pu7gqMnSde6fQzNHK1N67q0NK55_qdHCbJDabKJwmlhQrq1YXC5qh9vjrJzMDhbREW0DFtIs=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczOZdq9I8aw_8pCPr96V_rxZlKzWwa94kEk8Wr26xXJj7ivPh213LFTnVTLTjz19-U5hAEt0s6osQBsTABhImx3IG2hcBIC8XLgIPCA74U2NLxbsNZw=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczMpDifhwoTH_j_oNHo7kBPJ1jdWRi08GEx5rlByzUOjXKgEfMy4WREjqWIPbuVEnxlbYCZvkNQDtts8UXHuv41ViDqqbokgsgDJdYvb2Zfg174dOlo=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczM7s80s3TtZYljY5y3m9648t8qzppjsB2lEhpPNmMCH1MOYn_UmmSrDPYyuDqXwd5YoydbNKi_tJID1sNHXyGj_Ryl3Q0mDQN2oXo-ZzyoDMs70cQw=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczNzi2c_vMT46r-0boaDx8XxImQCboXlZQ039FRtINBSOtM-l8RaytP5scI8i-jrvR6wreI3qPenPhXPsqXoKP9iqihzIwJY4T4XCAc615E3X0Lpl6g=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczMRXXOY4Vf8MqNGqZDvMtHBVg96LsIIfGST-a-pEAWWQ5_jqJgp0wlBOHUYxy6KGfT0ZVz9v9BZiCvSOUlmYJqcKVa-rnAJ0MF44YLs7N00su2Cc0Q=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczO2ZexOVVGnHeYPxEzBnNYJ6kMRXzeO_m42Lio_U0PfOg5aLRtixu7yDvf2qCNV7-JI8FfmhyIy6uCm7py2oUZ_eRKQH7uuAxKbCOl-1PMuyuPlJgI=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczNB1brtLJ_t3Bhp829OxNMKj_ZFreRDY7o1DojqlU90PSPto9pHdg_RLZxnOuibvzp8JC7NnetoWgcXMmnjs9NLgQCipCHSjQrq0mY1Y31sT5p4gxQ=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczPmIrQifRI1g3kQSIeEHgPBwTBpBo7l2HBtgGgzhLB4zRb7UhPe1bbC7wml42Za0J81qx7eow-lTKesSH0cMXWOsv1JkwFcwouS4su-HR-jzW-d5oc=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczOO6q8NxGXYe7PdkM58DsHZ1Bkoxx0RsIvcHwV68YSJSS0WYYHJL9XcC8yRd8fNALEs-M2FWkdKqsAsM-CwsdUQMBTkoEzKNzBK3iwzWF0Nglz0jiQ=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczOvN9eGfTowkz2aSD9eBU7vPrD4j2BhT1U4yIdOJpoOz6WM1SSYDyS7kPZ9mFuPg3b6i_EzptAmmynlaf8WPKRcZxWtAhRjYHCQig_latT_uCq1mMA=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczO_CE7I2WUE-oy2zG-lueocFkgTCCoadOcJNpsMQGozNk1hpH29SRsOkzt_5mKayP3D_EH0dzRyvqbyBL5aXPGm2qxqlRO3JeMO7hDlRkGTXmf1xto=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczOITYWd_gkkZStySJ2Y--LdDO2Vj6kSfnNJkcAZSWF-yB7B5_txAkyu5R_V2lHukPpXitGDuXXxC5pbMz2mSSfRi1LadTyDEvfZe0MXhU-v20HcNpo=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczOOf9zBUWZ58a8F0v8ZzhOsX5oNn5dIYjPR0wwfkFIb7f-GO7xrZ8jgeWMnYPcoY0ruwvaehDLuw1VyHJqhjAcaGN8jJqjOx7rGtrHFgJXgMYU0wGE=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczN9BerFt3gK2PRwFd-KEORwz0d7k9xg-tjO4Nx0cRTeOXkeE7ns2uMxL0uWS1fwUIPaIgZ15TyYVdkPmsTDKeA8Fdytgg1wkFhjjvfTDhNDas8KENo=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczMidgxbpT9zzyFwkhRwg9POh3neFOLDuNcA7Rk_3FwaLWXZrW14V1drJAzQKofbvThrfzvSuwc0b_TNPvRjxkhrB8hPbaHIvX_J6RYZuYUqU1L77Rg=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczN9BerFt3gK2PRwFd-KEORwz0d7k9xg-tjO4Nx0cRTeOXkeE7ns2uMxL0uWS1fwUIPaIgZ15TyYVdkPmsTDKeA8Fdytgg1wkFhjjvfTDhNDas8KENo=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczP9QQaedxTrrqcOhWAtBbrAWv_xo8qc295c5VeffgjnBEgjQAAWAg5620r_TmTwnzztIdDP7TPtdPdXAFQIt8N7QYOBR6yRD5g42tD2W9tghtfAjRQ=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczOR-Ni6UPZmoq6K0UaLryjAHpxWT4_fZgkgOzz87Cf60w8S5H8MAgVqitql4dNHLfWJjTlrvliJLATWxGITGuNBTHZ_X_mUTiPSPFL3TxWcOXbaeX8=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczO3_8oGkrhDMRW72Kgm5Vo_vqHVSPhjUytGVymu=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczPfv_w2t1_ucpWjw7Fh6B-sy4x0sYlFncWwgwp6JevWjdapAtdtDHmWqrevHXC2LSKwK0mQBIhJEXpONKHTpEMaOTdshwh7j0Dr7JoSMij4yBaFuD0=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczNdBlWrrr0huBrNPxbNQ3BjO3Js5frz7uSPXp11jFDJGBXif2j9rqPOKI0bg4w4kBs3GcvLP17A0rjEGe1Qiwc9PzJOB5hOJTVVMa71Nw7zfdEiceQ=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczMOZ4nHZw6Mcy6yDcIGkLl34EAdJbUB6IMoRh30C7tsAT4YDVvE4YGUi_0ppVFYgkyOK2XkESZc6U_HGaTGtvDygGm1_DdbymYI0rRVuaI05tzEG7k=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczMy83_una_QwZHSXI5oUeJEriF0Q0Nc7bSYYAzEL2l8jAcIdM4eL-gxvrtici3XqIO9SG9PyW5bH8U3YUbC7by_gTABRvIfEAH4M8CG8A06Ag6kGAk=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczPfymiarOvaakaiPuu3H99mvBLeoidAlDT2RpcCLJ7RvkVfjKM27CnGaIsQD-wmk2v4W2OrL4_QmzV5GhIJ2PZuc4DhsIaJ3OOkiuFCWBEfS3Ijm14=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczOiiT6G02ZqH3ILYD6TZFKXaXVZXwUZl_G0B9vFQTSZtgEnjpWl_CuuAMtvnJSFSezrFydHimvvOuZWeLRcMd8TgVaoIBtHk7A4J3v7C7oKgnib7mg=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczN6_L_jXtdEXsAxbXzpNFkgKa7FrYAupo0pBKROBfxpy5GrLEptzo1-sVxfMzhYxnZicWXaYNVTat-EX7d0aNu3r_jVPN6t8Yz80WfkCPjJY9kTn0U=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczNwrzgBWrsIwgw3EmBIvwXkX4Ye_6V2WzO6x4PWoICelU5rQuy_3S1ChUBvuDkLWEWd5BqIL8iXes_A244XvzgnuX-Ffg02B83xe0Q2xXt7MJV4gZs=w800",
+      "https://lh3.googleusercontent.com/pw/AP1GczOVPYmJcjU3kFpht6s9kyKshy0vRiNgDXEUxm1BGueIAcAFgVRc5pZy0ueFdHk8WtdIMKNy9YyGkxnCECUBtGQYlmg1wM-u6kBzR7ppvmlsDh3EtTo=w800"
+    ];
+
+    let current = 0;
+    const grid = document.getElementById('galerie');
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const lbCounter = document.getElementById('lb-counter');
+
+    photos.forEach((src, i) => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = `Photo du bien ${i+1}`;
+      img.loading = 'lazy';
+      img.onclick = () => openLB(i);
+      grid.appendChild(img);
+    });
+
+    function openLB(i) {
+      current = i;
+      lbImg.src = photos[i];
+      lbCounter.textContent = (i+1) + ' / ' + photos.length;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLB() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function moveLB(dir) {
+      current = (current + dir + photos.length) % photos.length;
+      lbImg.src = photos[current];
+      lbCounter.textContent = (current+1) + ' / ' + photos.length;
+    }
+
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLB();
+      if (e.key === 'ArrowLeft') moveLB(-1);
+      if (e.key === 'ArrowRight') moveLB(1);
+    });
+  </script>
 </body>
 </html>
