@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Title & Meta -->
+  <title>Immeuble de rapport à vendre – Bischwiller 67240 – 5 appartements – 198 000 €</title>
+  <meta name="description" content="Immeuble de rapport à vendre à Bischwiller (Bas-Rhin, 67240). 5 appartements + potentiel 6e logement, 185 m², jardin privatif, rendement 10-13%. Prix : 198 000 €. Idéal investisseur Alsace.">
+  <meta name="keywords" content="immeuble rapport vente Bischwiller, investissement locatif Bas-Rhin, immeuble appartements Alsace, immeuble de rapport 67240, rendement locatif Bischwiller, achat immeuble Strasbourg périphérie">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Particulier – Steadrik">
+
+  <!-- Open Graph (partage réseaux sociaux) -->
+  <meta property="og:title" content="Immeuble de rapport 5 appts – Bischwiller 67 – 198 000 €">
+  <meta property="og:description" content="Immeuble 185m², 5 appartements + potentiel 6e logement, jardin, rendement 10-13%. À vendre à Bischwiller (67240), proche Strasbourg.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+
+  <!-- Schema.org JSON-LD (pour Google Rich Results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    "name": "Immeuble de rapport 5 appartements – Bischwiller 67240",
+    "description": "Immeuble de rapport composé de 5 appartements (studio, T1, 2×T2, T3) plus potentiel 6e logement. Surface totale 185 m², jardin privatif, 3 niveaux, rue des Écoles à Bischwiller (Bas-Rhin). Travaux de rénovation à prévoir. Rendement locatif estimé 10-13%.",
+    "url": "https://www.leboncoin.fr/ad/ventes_immobilieres/3167478155",
+    "offers": {
+      "@type": "Offer",
+      "price": "198000",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rue des Écoles",
+      "addressLocality": "Bischwiller",
+      "postalCode": "67240",
+      "addressRegion": "Bas-Rhin",
+      "addressCountry": "FR"
+    },
+    "numberOfRooms": 12,
+    "floorSize": {
+      "@type": "QuantitativeValue",
+      "value": 185,
+      "unitCode": "MTK"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1612;
+      --cream: #f5f0e8;
+      --warm: #e8dfd0;
+      --gold: #b8860b;
+      --gold-light: #d4a017;
+      --rust: #8b4513;
+      --text-muted: #6b6258;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: var(--ink);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 40px,
+          rgba(184,134,11,0.04) 40px,
+          rgba(184,134,11,0.04) 41px
+        );
+      pointer-events: none;
+    }
+
+    .hero-accent {
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,134,11,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 40px 60px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.2s;
+    }
+
+    .hero h1 em {
+      color: var(--gold-light);
+      font-style: normal;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.65);
+      font-weight: 300;
+      line-height: 1.6;
+      max-width: 560px;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.35s;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 0;
+      flex-wrap: wrap;
+      border: 1px solid rgba(184,134,11,0.3);
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.5s;
+    }
+
+    .stat {
+      flex: 1;
+      min-width: 140px;
+      padding: 24px 28px;
+      border-right: 1px solid rgba(184,134,11,0.3);
+    }
+    .stat:last-child { border-right: none; }
+
+    .stat-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+      display: block;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.65s;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 16px 36px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .btn-secondary {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+      padding: 16px 36px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 1s;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(184,134,11,0.6), transparent);
+      animation: scrollDown 1.8s ease-in-out infinite;
+    }
+
+    /* ─── SECTION COMMUNE ─── */
+    section { padding: 80px 40px; }
+
+    .container { max-width: 900px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 40px;
+    }
+
+    /* ─── COMPOSITION ─── */
+    .lots-section { background: var(--white); }
+
+    .lots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--warm);
+      border: 1px solid var(--warm);
+      margin-bottom: 40px;
+    }
+
+    .lot {
+      background: var(--white);
+      padding: 28px 24px;
+      position: relative;
+      transition: background 0.2s;
+    }
+    .lot:hover { background: var(--cream); }
+
+    .lot-type {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .lot-surface {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .lot-potential {
+      background: rgba(184,134,11,0.08);
+      border-left: 3px solid var(--gold);
+      padding: 20px 24px;
+      margin-top: 8px;
+    }
+
+    .lot-potential p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .lot-potential strong { color: var(--ink); }
+
+    /* ─── RENDEMENT ─── */
+    .rendement-section { background: var(--ink); }
+    .rendement-section .section-title { color: var(--white); }
+
+    .rendement-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: rgba(184,134,11,0.2);
+      border: 1px solid rgba(184,134,11,0.2);
+    }
+
+    .rendement-item {
+      background: var(--ink);
+      padding: 32px 28px;
+    }
+
+    .rendement-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .rendement-desc {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+
+    /* ─── LOCALISATION ─── */
+    .localisation-section { background: var(--cream); }
+
+    .atouts-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .atouts-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 20px;
+      background: var(--white);
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .atouts-list li:hover { border-color: var(--gold); }
+
+    .atout-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .atout-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .atout-text span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ─── DETAILS BIEN ─── */
+    .details-section { background: var(--white); }
+
+    .details-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .details-table tr {
+      border-bottom: 1px solid var(--warm);
+      transition: background 0.15s;
+    }
+    .details-table tr:hover { background: var(--cream); }
+
+    .details-table td {
+      padding: 16px 20px;
+      font-size: 0.9rem;
+    }
+
+    .details-table td:first-child {
+      color: var(--text-muted);
+      width: 45%;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .details-table td:last-child {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* ─── CTA FINAL ─── */
+    .cta-section {
+      background: var(--gold);
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--white);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1rem;
+      margin-bottom: 40px;
+    }
+
+    .btn-white {
+      display: inline-block;
+      background: var(--white);
+      color: var(--gold);
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 18px 48px;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.15); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 32px;
+      font-size: 0.78rem;
+      line-height: 1.7;
+    }
+
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 32px;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollDown {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50%       { transform: scaleY(0.5); opacity: 0.3; }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      section { padding: 60px 24px; }
+      .hero-content { padding: 60px 24px 48px; }
+      .stat { min-width: 120px; padding: 18px 20px; }
+      .stat-val { font-size: 1.5rem; }
+      .cta-section { padding: 60px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" aria-label="Présentation du bien">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-accent"></div>
+    <div class="hero-content">
+      <span class="hero-tag">🏢 Immeuble de rapport · Bischwiller 67240 · Bas-Rhin</span>
+      <h1>5 appartements<br>à <em>Bischwiller</em>,<br>fort rendement</h1>
+      <p class="hero-sub">Immeuble de 185 m² sur 3 niveaux, rue des Écoles, avec jardin privatif et potentiel de création d'un 6e logement. À 20 min de Strasbourg en TER.</p>
+
+      <div class="hero-stats" role="list" aria-label="Chiffres clés">
+        <div class="stat" role="listitem">
+          <span class="stat-val">198 000 €</span>
+          <span class="stat-label">Prix de vente</span>
+        </div>
+        <div class="stat" role="listitem">
+          <span class="stat-val">185 m²</span>
+          <span class="stat-label">Surface habitable</span>
+        </div>
+        <div class="stat" role="listitem">
+          <span class="stat-val">5 + 1</span>
+          <span class="stat-label">Appartements</span>
+        </div>
+        <div class="stat" role="listitem">
+          <span class="stat-val">~12%</span>
+          <span class="stat-label">Rendement brut</span>
+        </div>
+      </div>
+
+      <div class="cta-group">
+        <a href="https://www.leboncoin.fr/ad/ventes_immobilieres/3167478155" target="_blank" rel="noopener" class="btn-primary">Voir l'annonce leboncoin →</a>
+        <a href="#composition" class="btn-secondary">Détails du bien</a>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span>Découvrir</span>
+    </div>
+  </section>
+
+  <!-- ═══ COMPOSITION ═══ -->
+  <section class="lots-section" id="composition" aria-labelledby="h2-composition">
+    <div class="container">
+      <span class="section-label">Composition</span>
+      <h2 class="section-title" id="h2-composition">Les 5 lots de l'immeuble</h2>
+      <div class="divider"></div>
+
+      <div class="lots-grid" role="list">
+        <div class="lot" role="listitem">
+          <span class="lot-type">Studio</span>
+          <span class="lot-surface">14,28 m²</span>
+        </div>
+        <div class="lot" role="listitem">
+          <span class="lot-type">T1</span>
+          <span class="lot-surface">34,58 m²</span>
+        </div>
+        <div class="lot" role="listitem">
+          <span class="lot-type">T2</span>
+          <span class="lot-surface">36,44 m²</span>
+        </div>
+        <div class="lot" role="listitem">
+          <span class="lot-type">T2</span>
+          <span class="lot-surface">32,93 m²</span>
+        </div>
+        <div class="lot" role="listitem">
+          <span class="lot-type">T3</span>
+          <span class="lot-surface">67,07 m²</span>
+        </div>
+      </div>
+
+      <div class="lot-potential" role="note" aria-label="Potentiel supplémentaire">
+        <p><strong>🔑 Potentiel 6e logement :</strong> 2 pièces d'environ 15 m² chacune (~30 m² au total) permettent la création d'un appartement supplémentaire, augmentant encore le rendement locatif de l'immeuble.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ RENDEMENT ═══ -->
+  <section class="rendement-section" aria-labelledby="h2-rendement">
+    <div class="container">
+      <span class="section-label" style="color: rgba(184,134,11,0.7)">Investissement</span>
+      <h2 class="section-title" id="h2-rendement">Un rendement<br>exceptionnel</h2>
+      <div class="divider"></div>
+
+      <div class="rendement-grid" role="list">
+        <div class="rendement-item" role="listitem">
+          <span class="rendement-num">1 800 €</span>
+          <p class="rendement-desc">Loyers mensuels estimés (5 lots occupés)</p>
+        </div>
+        <div class="rendement-item" role="listitem">
+          <span class="rendement-num">10–13 %</span>
+          <p class="rendement-desc">Rendement brut annuel estimé</p>
+        </div>
+        <div class="rendement-item" role="listitem">
+          <span class="rendement-num">1 070 €/m²</span>
+          <p class="rendement-desc">Prix au m² — bien en dessous du marché alsacien</p>
+        </div>
+        <div class="rendement-item" role="listitem">
+          <span class="rendement-num">1 340 €</span>
+          <p class="rendement-desc">Taxe foncière annuelle</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LOCALISATION ═══ -->
+  <section class="localisation-section" aria-labelledby="h2-localisation">
+    <div class="container">
+      <span class="section-label">Localisation</span>
+      <h2 class="section-title" id="h2-localisation">Bischwiller,<br>une adresse stratégique</h2>
+      <div class="divider"></div>
+
+      <ul class="atouts-list">
+        <li>
+          <span class="atout-icon">🚆</span>
+          <div class="atout-text">
+            <strong>Gare à 2 min à pied</strong>
+            <span>Rue des Écoles, quartier Centre-ville / Gare</span>
+          </div>
+        </li>
+        <li>
+          <span class="atout-icon">🏙️</span>
+          <div class="atout-text">
+            <strong>Strasbourg à 20 min</strong>
+            <span>Accès direct en TER, bassin d'emploi majeur</span>
+          </div>
+        </li>
+        <li>
+          <span class="atout-icon">🏫</span>
+          <div class="atout-text">
+            <strong>Écoles & commerces proches</strong>
+            <span>Centre-ville de Bischwiller à pied</span>
+          </div>
+        </li>
+        <li>
+          <span class="atout-icon">🌿</span>
+          <div class="atout-text">
+            <strong>Jardin privatif</strong>
+            <span>Espace extérieur en fond de parcelle</span>
+          </div>
+        </li>
+        <li>
+          <span class="atout-icon">🏗️</span>
+          <div class="atout-text">
+            <strong>Travaux à prévoir</strong>
+            <span>Rénovation + énergétique — aides MaPrimeRénov' éligibles</span>
+          </div>
+        </li>
+        <li>
+          <span class="atout-icon">📅</span>
+          <div class="atout-text">
+            <strong>Disponible dès avril 2026</strong>
+            <span>Libération rapide du bien</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══ DETAILS ═══ -->
+  <section class="details-section" aria-labelledby="h2-details">
+    <div class="container">
+      <span class="section-label">Fiche technique</span>
+      <h2 class="section-title" id="h2-details">Informations complètes</h2>
+      <div class="divider"></div>
+
+      <table class="details-table" aria-label="Caractéristiques du bien">
+        <tbody>
+          <tr><td>Type de bien</td><td>Immeuble de rapport – Résidence collective</td></tr>
+          <tr><td>Adresse</td><td>Rue des Écoles, Bischwiller 67240 (Bas-Rhin)</td></tr>
+          <tr><td>Surface habitable</td><td>185,30 m²</td></tr>
+          <tr><td>Nombre de pièces</td><td>12 pièces</td></tr>
+          <tr><td>Nombre de lots</td><td>5 appartements (+ potentiel 6e)</td></tr>
+          <tr><td>Niveaux</td><td>3 niveaux (R+2)</td></tr>
+          <tr><td>Année de construction</td><td>1949</td></tr>
+          <tr><td>État</td><td>Travaux de rénovation et énergétiques à prévoir</td></tr>
+          <tr><td>Chauffage</td><td>Électrique</td></tr>
+          <tr><td>Extérieur</td><td>Jardin privatif</td></tr>
+          <tr><td>Prix de vente</td><td><strong>198 000 €</strong> (soit 1 070 €/m²)</td></tr>
+          <tr><td>Frais de notaire estimés</td><td>15 840 €</td></tr>
+          <tr><td>Taxe foncière</td><td>1 340 €/an</td></tr>
+          <tr><td>Disponibilité</td><td>Avril 2026</td></tr>
+          <tr><td>Vendeur</td><td>Particulier (vente directe, sans agence)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ CTA FINAL ═══ -->
+  <section class="cta-section" aria-label="Contact et annonce">
+    <h2>Intéressé par ce bien ?</h2>
+    <p>Visites sur rendez-vous — Contact sérieux uniquement</p>
+    <a href="https://www.leboncoin.fr/ad/ventes_immobilieres/3167478155" target="_blank" rel="noopener" class="btn-white">
+      Contacter le vendeur sur leboncoin →
+    </a>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <p>Immeuble de rapport à vendre · <strong style="color:rgba(255,255,255,0.6)">Bischwiller (67240), Bas-Rhin, Alsace</strong></p>
+    <p style="margin-top:8px">Annonce originale : <a href="https://www.leboncoin.fr/ad/ventes_immobilieres/3167478155" target="_blank" rel="noopener">leboncoin.fr</a> · Particulier · Vente directe</p>
+    <p style="margin-top:8px; font-size:0.72rem; opacity:0.5">Page de présentation non contractuelle — informations à titre indicatif</p>
+  </footer>
+
+</body>
+</html>
